@@ -41,6 +41,11 @@ func requestHandler(w http.ResponseWriter, r *http.Request){
 		r.Body.Close()
 		fmt.Printf("%s\n", result)
 
+		if result == nil {
+			fmt.Println("result is null")
+			return
+		}
+
 		var f interface{}
 		json.Unmarshal(result, &f)
 		m := f.(map[string]interface{})
